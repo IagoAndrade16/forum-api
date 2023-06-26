@@ -4,7 +4,7 @@ import { Optional } from '@/core/types/optional'
 import dayjs from 'dayjs'
 import { Slug } from './value-objects/slug'
 
-interface QuestionProps {
+export interface QuestionProps {
   title: string
   content: string
   authorId: UniqueEntityID
