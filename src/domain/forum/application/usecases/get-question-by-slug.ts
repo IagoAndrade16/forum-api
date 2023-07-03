@@ -1,4 +1,4 @@
-import { Either, rigth } from '@/core/either'
+import { Either, left, rigth } from '@/core/either'
 import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../../enterprise/repositories/questions-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
@@ -23,7 +23,7 @@ export class GetQuestionBySlugUseCase {
     const question = await this.questionsRepository.findBySlug(slug)
 
     if (!question) {
-      throw new Error('Question not found')
+      return left(new ResourceNotFoundError())
     }
 
     return rigth({ question })
